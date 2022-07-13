@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "af1f73c3-4293-4a60-8780-be64d57a4773",
+		"name": "Grupo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"grupo\", res[0].pk);",
+							"tests[\"El grupo se creo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Grupo\",\n    \"imagen\": \"https://th.bing.com/th/id/R.d934a8f36a44ca8c3f546eaa743c7354?rik=%2bWtr1FPYNrF4bg&pid=ImgRaw&r=0\",\n    \"balance\": 12765.25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Grupos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los grupos se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El grupo se obtuvo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos/{{grupo}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos",
+						"{{grupo}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Planes de un Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los planes se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos/{{grupo}}/planes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos",
+						"{{grupo}}",
+						"planes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Miembros de un Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los miembros se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos/{{grupo}}/miembros",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos",
+						"{{grupo}}",
+						"miembros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El grupo se actualizó correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Nuevo Nombre\",\n    \"imagen\": \"https://th.bing.com/th/id/R.d934a8f36a44ca8c3f546eaa743c7354?rik=%2bWtr1FPYNrF4bg&pid=ImgRaw&r=0\",\n    \"balance\": 12765.25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos/{{grupo}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos",
+						"{{grupo}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Grupo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El grupo se eliminó correctamente\"] = responseCode.code === 204;",
+							"pm.collectionVariables.unset(\"grupo\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/grupos/{{grupo}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"grupos",
+						"{{grupo}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

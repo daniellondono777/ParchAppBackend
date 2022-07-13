@@ -1,0 +1,233 @@
+{
+	"info": {
+		"_postman_id": "8c643617-6d0a-465e-8523-4316d620b6d1",
+		"name": "Representante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Representante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"repre\", res[0].pk);",
+							"tests[\"El representante se creo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"burnzyo\",\n    \"nombre\": \"Jhorman\",\n    \"password\": \"password\",\n    \"correo\": \"jo.caballero@uniandes.edu.co\",\n    \"fechaNacimiento\": \"09-05-2001\",\n    \"numeroDocumento\": \"1004922495\",\n    \"tipoDocumento\": \"CC\",\n    \"cargo\": \"Dueno\",\n    \"fechaExpDocumento\": \"14-04-2018\",\n    \"imagen\": \"imagen.jpeg\",\n    \"lugar\": null,\n    \"partner\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Representantes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los representantes se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Representante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El representante se obtuvo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes/{{repre}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes",
+						"{{repre}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Posts de un Representante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los representantes se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes/{{repre}}/posts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes",
+						"{{repre}}",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Representante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El representante se actualizo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"burnzyo\",\n    \"nombre\": \"Jhorman\",\n    \"password\": \"password\",\n    \"correo\": \"jo.caballero@uniandes.edu.co\",\n    \"fechaNacimiento\": \"09-05-2001\",\n    \"numeroDocumento\": \"1004922495\",\n    \"tipoDocumento\": \"CC\",\n    \"cargo\": \"Nuevo Cargo\",\n    \"fechaExpDocumento\": \"14-04-2018\",\n    \"imagen\": \"imagen.jpeg\",\n    \"lugar\": null,\n    \"partner\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes/{{repre}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes",
+						"{{repre}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Representante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El representante se elimino correctamente\"] = responseCode.code === 204;",
+							"pm.collectionVariables.unset(\"repre\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/representantes/{{repre}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"representantes",
+						"{{repre}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "3951f797-590e-490e-9c51-cb246ab22cef",
+		"name": "Lugar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"lugar\", res[0].pk);",
+							"tests[\"El lugar se creo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Lugar\",\n    \"precio\": 67899,\n    \"direccion\": \"Direccion\",\n    \"tipo\": \"RU\",\n    \"horaApertura\": \"18:00\",\n    \"horaCierre\": \"04:00\",\n    \"calificacion\": 4.52,\n    \"imagen\": \"imagen.jpeg\",\n    \"latitud\": \"154.114515515\",\n    \"longitud\": \"164.17478165851\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Lugares",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los lugares se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El lugar se obtuvo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Clientes de un Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los clientes se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}/clientes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}",
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Eventos de un Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los eventos se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}/eventos",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}",
+						"eventos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Planes de un Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los planes se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}/planes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}",
+						"planes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Posts de un Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los posts se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}/posts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El lugar se actualizó correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Nuevo nombre\",\n    \"precio\": 67899,\n    \"direccion\": \"Direccion\",\n    \"tipo\": \"RU\",\n    \"horaApertura\": \"18:00\",\n    \"horaCierre\": \"04:00\",\n    \"calificacion\": 4.52,\n    \"imagen\": \"imagen.jpeg\",\n    \"latitud\": \"154.114515515\",\n    \"longitud\": \"164.17478165851\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Lugar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El lugar se eliminó correctamente\"] = responseCode.code === 204;",
+							"pm.collectionVariables.unset(\"lugar\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/lugares/{{lugar}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"lugares",
+						"{{lugar}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

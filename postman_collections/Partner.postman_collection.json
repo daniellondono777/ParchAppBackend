@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "8013c5ad-0c04-4d8a-b649-712d4e3ba74a",
+		"name": "Partner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Partner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var res = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"partner\", res[0].pk);",
+							"tests[\"El partner se creo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipoSuscripcion\": \"ST\",\n    \"fechaFin\": \"01-01-2023\",\n    \"fechaInicio\":\"01-01-2022\",\n    \"duracion\": \"1 agno\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/partners",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Partners",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"Los partners se obtuvieron correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/partners",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"partners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Partner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El partner se obtuvo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/partners/{{partner}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"partners",
+						"{{partner}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Partner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El partner se actualizo correctamente\"] = responseCode.code === 200;"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"tipoSuscripcion\": \"PR\",\n    \"fechaFin\": \"01-01-2023\",\n    \"fechaInicio\":\"01-01-2022\",\n    \"duracion\": \"1 agno\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/partners/{{partner}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"partners",
+						"{{partner}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Partner",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"tests[\"El partner se eliminó correctamente\"] = responseCode.code === 204;",
+							"pm.collectionVariables.unset(\"partner\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/partners/{{partner}}",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"partners",
+						"{{partner}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
